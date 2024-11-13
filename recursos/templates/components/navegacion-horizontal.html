@@ -1,0 +1,62 @@
+<div class="mb-3 mt-1 content">
+    <!-- Botón en pantallas pequeñas -->
+    <div class="d-lg-none mb-1">
+        <button type="button" class="btn w-100 btn-light d-flex justify-content-between align-items-center"
+            data-bs-toggle="collapse" data-bs-target="#horizontal-navigation-hover-normal" aria-expanded="false" aria-controls="horizontal-navigation-hover-normal">
+            Presiona para ver más atributos
+            <i class="fa fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Menú colapsable en pantallas pequeñas -->
+    <div id="horizontal-navigation-hover-normal" class="collapse">
+        <div class="row">
+            <div class="col-12">
+                <div class="nav flex-column nav-pills bg-light p-1" id="vl-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link {% if request.path == '/laboratorios' %}active{% endif %}" href="{% url 'laboratorios' %}">
+                        <span class="d-flex align-items-center gap-1"><iconify-icon icon="entypo:lab-flask" width="1.5rem" height="1.5rem"></iconify-icon> Laboratorios</span>
+                    </a>
+                    <a class="nav-link {% if request.path == '/principios_activos' %}active{% endif %}" href="{% url 'principios_activos' %}">
+                        <span class="d-flex align-items-center gap-1"><iconify-icon icon="solar:jar-of-pills-2-bold-duotone" width="1.5rem" height="1.5rem"></iconify-icon> Principios Activos</span>
+                    </a>
+                    <a class="nav-link" href="#vl-pills-settings">
+                        <span class="d-flex align-items-center gap-1"><iconify-icon icon="solar:medical-kit-bold-duotone" width="1.5rem" height="1.5rem"></iconify-icon> Lineas Farmaceuticas</span>
+                    </a>
+                    <a class="nav-link" href="#vl-pills-settings">
+                        <span class="d-flex align-items-center gap-1"><iconify-icon icon="solar:pills-bold-duotone" width="1.5rem" height="1.5rem"></iconify-icon> Categorias</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú horizontal en pantallas grandes -->
+    <div class="mt-2 d-none d-lg-block mt-lg-0">
+        <ul class="nav nav-pills nav-justified p-2 bg-light">
+            <li class="nav-item active">
+                <a class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/laboratorios' %}active{% endif %}" href="{% url 'laboratorios' %}">
+                    <iconify-icon icon="entypo:lab-flask" width="1.5rem" height="1.5rem"></iconify-icon>
+                    <span class="nav-main-link-name">Laboratorios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/principios_activos' %}active{% endif %}" href="{% url 'principios_activos' %}">
+                    <iconify-icon icon="solar:jar-of-pills-2-bold-duotone" width="1.5rem" height="1.5rem"></iconify-icon>
+                    <span class="nav-main-link-name">Principios Activos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-center gap-1" href="#messagesTabsJustified">
+                    <iconify-icon icon="solar:medical-kit-bold-duotone" width="1.5rem" height="1.5rem"></iconify-icon>
+                    <span class="nav-main-link-name">Lineas Farmaceuticas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-center gap-1" href="#messagesTabsJustified">
+                    <iconify-icon icon="solar:pills-bold-duotone" width="1.5rem" height="1.5rem"></iconify-icon>
+                    <span class="nav-main-link-name">Categorias</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

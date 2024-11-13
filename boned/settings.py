@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'recursos',
     'productos',
     'laboratorio',
+    'principios_activos'
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,100 @@
+{% extends 'layout-vertical.html' %}
+
+{% load static i18n %}
+
+{% block title %}Principios Activos{% endblock %}
+
+{% block page_content %}
+{% include 'components/navegacion-horizontal.html' %}
+<div class="row">
+  <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h4 class="card-title mb-2 d-flex align-items-center gap-2">Principios activos en total </h4>
+                        <p class="text-muted fw-medium fs-22 mb-0">{{ total_principios_activos }}</p>
+                    </div>
+                    <div>
+                        <div class="avatar-md bg-primary bg-opacity-10 rounded">
+                            <iconify-icon icon="entypo:lab-flask" class="fs-32 text-primary avatar-title"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center gap-1">
+        {% include 'components/boton-crear-principio-activo.html' %}
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+            This Month
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <!-- item-->
+            <a href="#!" class="dropdown-item">Download</a>
+            <!-- item-->
+            <a href="#!" class="dropdown-item">Export</a>
+            <!-- item-->
+            <a href="#!" class="dropdown-item">Import</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0 table-hover table-centered js-dataTable-responsive">
+            <thead class="bg-light-subtle">
+              <tr>
+                <th>Nombre</th>
+                <th>Concentracion</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in page_obj %}
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
+                      <img src="{% static '/images/product/p-1.png' %}" alt="" class="avatar-md">
+                    </div>
+                    <p class="text-dark fw-medium fs-15 mb-0">{{ p.nombre }}</p>
+                  </div>
+                </td>
+                <td>{{ p.concentracion }}</td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                    <a href="#!" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                    <a href="#!" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                  </div>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4" class="text-center">No products available.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% include 'components/paginacion.html' %}
+        <!-- end table-responsive -->
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'components/formulario-creacion-principio-activo.html' %}
+{% endblock page_content %}
+{% block extra_javascript %}
+  <script src="{% static 'js_personalizado/jquery.min.js' %}"></script>
+  <script src="{% static 'js_personalizado/plugins/datatables/dataTables.min.js' %}"></script>
+  <script src="{% static 'js_personalizado/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+  <script src="{% static 'js_personalizado/plugins/datatables-buttons/dataTables.buttons.min.js' %}"></script>
+  <script src="{% static 'js_personalizado/my_datatables.js' %}"></script>
+{% endblock extra_javascript %}

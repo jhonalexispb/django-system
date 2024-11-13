@@ -1,0 +1,39 @@
+{% load static %}
+<button class="btn btn-sm btn-primary" id="crear-lab">
+    Crear Laboratorio
+</button>
+
+{% block extra_javascript %}
+    <script src="{% static 'js_personalizado/plugins/axios/axios.min.js' %}"></script>
+    <script src="{% static 'js_personalizado/plugins/lottie-web/lottie.min.js' %}"></script>
+    <script type="module">
+        import { handleError, tiempoEstandar } from "{% static 'js_personalizado/plugins/axios/axiosHelper.js' %}";
+
+        document.getElementById('crear-lab').addEventListener('click', function() {
+            const modalElement = document.getElementById('modal-laboratorio');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            const createButton = this; // Usar el botón que disparó el evento
+            createButton.disabled = true;
+            createButton.textContent = 'Generando formulario...';
+
+            axios.get('/laboratorios/siguiente-codigo', tiempoEstandar)
+            .then(response => {
+                const data = response.data; // Manejar la respuesta
+                document.getElementById('codigo').value = data.codigo;
+                modal.show();
+            })
+            .catch(error => {
+                handleError(error); // Manejar el error
+            })
+            .finally(() => {
+                createButton.disabled = false;
+                createButton.textContent = '';
+
+                const icon = document.createElement('i');
+                icon.className = 'si si-plus';
+                createButton.appendChild(icon);
+                createButton.append(' Crear laboratorio');
+            });
+        });
+    </script>
+{% endblock extra_javascript %}
