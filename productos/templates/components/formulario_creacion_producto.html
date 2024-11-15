@@ -19,9 +19,11 @@
                         {% endfor %}
                         {% endif %}
                     </div>
-
                     <div class="col-lg-6">
-                        <label for="product-categories" class="form-label">Product Categories</label>
+                        <div class="d-flex justify-content-between">
+                            <label for="product-categories" class="form-label">Product Categories</label>
+                            {% include 'components/boton-crear-principio-activo.html' %}
+                        </div>
                         <select class="form-control" id="product-categories" data-choices data-choices-groups data-placeholder="Select Categories" name="choices-single-groups">
                             <option value="">Choose a categories</option>
                             <option value="Fashion">Fashion</option>
@@ -155,3 +157,4 @@
         </form>
     </div>
 </div>
+{% include 'components/formulario-creacion-principio-activo.html' %}
