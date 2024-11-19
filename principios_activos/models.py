@@ -8,3 +8,6 @@ class PrincipioActivo(models.Model):
 
     class Meta:
         db_table = 'principios_activos'
+        constraints = [
+            models.UniqueConstraint(fields=['nombre', 'concentracion'], name='unique_compocicion')
+        ]

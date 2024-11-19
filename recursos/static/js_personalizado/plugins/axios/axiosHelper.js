@@ -30,10 +30,13 @@ const handleError = (error,nombre,formulario) => {
                 for (const field in errors) {
                     const errorMessage = errors[field][0];
                     const input = form.querySelector(`[name="${field}"]`);
-                    const errorDiv = document.createElement('span');
-                    errorDiv.className = 'error text-danger';
-                    errorDiv.textContent = errorMessage;
-                    input.parentNode.insertBefore(errorDiv, input.nextSibling);
+                    if(input){
+                        input.classList.add('is-invalid');
+                        const errorDiv = document.createElement('span');
+                        errorDiv.className = 'error text-danger';
+                        errorDiv.textContent = errorMessage;
+                        input.parentNode.insertBefore(errorDiv, input.nextSibling);
+                    }
                 }
 
                 if (error.response.data.error) {
@@ -93,9 +96,13 @@ const handleError = (error,nombre,formulario) => {
 function clearErrors(formulario) {
     const form = document.getElementById(formulario);
     const errorMessages = form.querySelectorAll('span.error');
+    const inputError = form.querySelectorAll('input.is-invalid')
     errorMessages.forEach((msg) => {
         msg.remove();
     });
+    inputError.forEach((error) => {
+        error.classList.remove('is-invalid');
+    })
 }
 
 export { handleResponse, handleError, tiempoEstandar, clearErrors};

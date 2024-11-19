@@ -1,16 +1,50 @@
 {% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'js_personalizado/plugins/selectize/css/selectize.bootstrap5.css' %}">
+    <link rel="stylesheet" href="{% static 'js_personalizado/plugins/selectize/css/style.css' %}">
+{% endblock css %}
+
 <button class="btn btn-sm btn-primary" id="crear-principio-activo">
     Crear Principio Activo
 </button>
 
 {% block extra_javascript %}
-    <script>
+    <script src="{% static 'js_personalizado/jquery.min.js' %}"></script>
+    <script src="{% static 'js_personalizado/plugins/selectize/js/selectize.min.js' %}"></script>
+    <script src="{% static 'js_personalizado/plugins/axios/axios.min.js' %}"></script>
+    <script type="module">
+        import { handleResponse, handleError, tiempoEstandar, clearErrors } from "{% static 'js_personalizado/plugins/axios/axiosHelper.js' %}";
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('crear-principio-activo').addEventListener('click', function() {
                 const modalElement = document.getElementById('modal-principio-activo');
                 // Obtener la instancia existente del modal creado en el componente formulario-edicion-linea-farmaceutica
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                modal.show();
+                axios.get('{% url "obtener_principio_activo" %}', tiempoEstandar)
+                .then(response => {
+                    const data = handleResponse(response);
+                    const selectNombre = document.getElementById('nombrePrincipioActivo');
+                    selectNombre.innerHTML = '';
+
+                    data.principios_activos.forEach(nombre => {
+                        const option = document.createElement('option');  // Crear un nuevo <option>
+                        option.value = nombre;  // El valor del <option> será el nombre
+                        option.textContent = nombre;  // El texto visible será el nombre
+                        selectNombre.appendChild(option);  // Agregar el <option> al select
+                    });
+
+                    if (selectNombre) {
+                        $(selectNombre).selectize({
+                            placeholder: 'Escoge uno..',
+                            allowEmptyOption: true,
+                        });
+                    }
+                    
+                    const modal = bootstrap.Modal.getInstance(modalElement);
+                    modal.show();
+                })
+                .catch(error => {
+                    handleError(error, "Alexis","formulario-principio-activo"); // Manejar el error
+                });
             });
         });
     </script>

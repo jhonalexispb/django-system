@@ -1,0 +1,77 @@
+/* Estilo para el contenedor de Selectize */
+.selectize-control {
+    border: 1px solid #ced4da; /* Color del borde */
+    height: calc(2.25rem + 2px);
+    border-radius: 0.25rem; /* Bordes redondeados */
+    background-color: #ffffff; /* Color de fondo */
+}
+
+/* Estilo para el elemento de entrada */
+.selectize-input {
+    padding: 0.375rem 0.75rem; /* Ajusta según sea necesario */
+    height: calc(2.25rem + 2px); /* Altura igual que los campos de Bootstrap */
+    line-height: 1.5; /* Asegura que el texto esté centrado */
+}
+
+/* Estilo para el menú desplegable */
+.selectize-dropdown {
+    border: 1px solid #ced4da; /* Color del borde del dropdown */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    width: 100% !important;
+}
+
+/* Estilo para opciones seleccionadas */
+.selectize-dropdown-content .option {
+    padding: 0.375rem 0.75rem; /* Padding para opciones */
+}
+
+/* Estilo para la opción seleccionada */
+.selectize-dropdown-content .option.active {
+    background-color: #007bff; /* Color de fondo cuando se activa */
+    color: white; /* Color del texto cuando se activa */
+}
+
+/* Estilo para el placeholder */
+.selectize-input > input::placeholder {
+    color: #6c757d; /* Color del placeholder */
+}
+
+div .item{
+    height: calc(1.5rem); /* Altura igual que los campos de Bootstrap */
+    display: inline;
+}
+
+html[data-bs-theme="dark"] .selectize-control {
+    background-color: #282f36; /* Fondo oscuro para tema oscuro */
+    border-color: #495057; /* Borde para tema oscuro */
+    color: white; /* Texto blanco para tema oscuro */
+}
+
+html[data-bs-theme="dark"] .selectize-dropdown {
+    background-color: #282f36; /* Fondo oscuro para dropdown */
+    color: white; /* Texto blanco para dropdown */
+}
+
+html[data-bs-theme="dark"] .selectize-input {
+    background-color: #282f36; /* Fondo oscuro para dropdown */
+    border-color: #303745;
+    color: black; /* Texto blanco para dropdown */
+}
+
+/* Estilos para modo oscuro */
+html[data-bs-theme="dark"] .selectize-input,
+html[data-bs-theme="dark"] .selectize-control.single .selectize-input.input-active {
+    background-color: #282f36; /* Fondo oscuro para input activo */
+    color: white; /* Color del texto */
+}
+
+/* Estilos para modo claro */
+html .selectize-input,
+html .selectize-control.single .selectize-input.input-active {
+    background-color: #fff; /* Fondo blanco */
+    color: black; /* Color del texto */
+}
+
+html[data-bs-theme="dark"] div .item{
+    color: white; /* Altura igual que los campos de Bootstrap */
+}

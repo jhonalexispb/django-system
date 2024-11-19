@@ -77,7 +77,9 @@
               </tr>
               {% empty %}
               <tr>
-                <td colspan="4" class="text-center">No products available.</td>
+                <td></td>
+                <td class="text-center">Sin datos que mostrar.</td>
+                <td></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -92,7 +94,7 @@
 {% include 'components/formulario-creacion-principio-activo.html' %}
 {% endblock page_content %}
 {% block extra_javascript %}
-  <script src="{% static 'js_personalizado/jquery.min.js' %}"></script>
+  
   <script src="{% static 'js_personalizado/plugins/datatables/dataTables.min.js' %}"></script>
   <script src="{% static 'js_personalizado/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
   <script src="{% static 'js_personalizado/plugins/datatables-buttons/dataTables.buttons.min.js' %}"></script>

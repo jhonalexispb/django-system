@@ -13,12 +13,16 @@
                     <form class="mb-4" action="#" method="POST" id="formulario-principio-activo" onsubmit="return false;">
                         {% csrf_token %}
                         <div class="mb-4">
-                            <label class="form-label" for="nombre">Nombre <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nombre" name="nombre">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="nombrePrincipioActivo">Nombre <span class="text-danger">*</span></label>
+                            </div>
+                            <select class="form-control select-dinamico-selectize" id="nombrePrincipioActivo" name="nombrePrincipioActivo">
+                                <option value="">Choose a categories</option>
+                            </select>
                         </div>
                         <div class="mb-4">
                             <label class="form-label" for="concentracion">Concentracion</label>
-                            <input type="text" class="form-control" id="concentracion" name="concentracion">
+                            <input type="text" class="form-control" id="concentracion" name="concentracion" autocomplete="off">
                         </div>
                         <div class="justify-content-between d-flex">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -56,7 +60,8 @@
                     });
                 })
                 .catch(error => {
-                    handleError(error, "","formulario-principio-activo"); // Manejar el error
+                    console.log(error)
+                    handleError(error, "Alexis","formulario-principio-activo"); // Manejar el error
                 });
             });
 
